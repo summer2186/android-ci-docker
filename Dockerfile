@@ -11,26 +11,26 @@ RUN apt-get install -y --no-install-recommends maven
 
 # Main Android SDK
 RUN wget -qO- "http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz" | tar -zxv -C /opt/
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --all --filter platform-tools,build-tools-20.0.0 --no-ui --force --proxy-host 192.168.1.7 --proxy-port 7070
+# RUN echo y | /opt/android-sdk-linux/tools/android update sdk --all --filter platform-tools,build-tools-20.0.0 --no-ui --force --proxy-host 192.168.1.7 --proxy-port 7070
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
-ARG ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS=
+ARG ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS="--proxy-host 192.168.1.7 --proxy-port 7070"
 
 RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter tools --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
 RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter platform-tools --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"build-tools-23.0.2\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"extra-android-support\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-23\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"extra-android-m2repository\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"extra-google-m2repository\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-17\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-18\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-19\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-21\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-22\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-20\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter build-tools-23.0.2 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter extra-android-support --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter android-23 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter extra-android-m2repository --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter extra-google-m2repository --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter android-17 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter android-18 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter android-19 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter android-21 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter android-22 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter android-20 --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
 
 
 # install gradle
@@ -41,7 +41,7 @@ RUN curl -sLO https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}
   ln -s gradle-${GRADLE_VERSION} gradle && \
   rm gradle-${GRADLE_VERSION}-all.zip
 
-ENV GRADLE_HOME /usr/bin/gradle
+ENV GRADLE_HOME /gradle
 ENV PATH $PATH:$GRADLE_HOME/bin
 
 # setup sshd
