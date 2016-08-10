@@ -26,8 +26,11 @@ RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-
 RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"extra-android-m2repository\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
 RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"extra-google-m2repository\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
 RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-17\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-17\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
-RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-19\" --no-ui --force -a
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-18\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-19\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-21\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-22\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
+RUN echo y | /opt/android-sdk-linux/tools/android update sdk --filter \"android-20\" --no-ui --force -a ${ANDROID_SDK_UPDATE_ADDITIONAL_PARAMS}
 
 
 # install gradle
