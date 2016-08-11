@@ -3,7 +3,7 @@ MAINTAINER summer
 
 # install basic tools
 RUN apt-get update
-RUN apt-get install -y wget curl unzip
+RUN apt-get install -y wget curl unzip git
 
 # install Android SDK dependencies
 RUN apt-get install -y openjdk-7-jre-headless lib32z1 lib32ncurses5 lib32bz2-1.0 g++-multilib
